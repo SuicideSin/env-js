@@ -866,3 +866,21 @@ test("Event Handlers Defined", function() {
     ok(a["onclick"], "mouse events defined");
     ok(a["onkeydown"], "keyboard events defined");
 });
+
+test("Event Handlers Invoked on Inline Attributes", function() {
+	try {
+		// enable eval of inline scripts for the duration of this test
+		Envjs.scriptTypes[""]=true;
+		
+	    var a=document.createElement("a");
+	    ok(a, "created anchor tag");
+	    a.setAttribute("onclick", "ok(true,'event invoked on an inline handler');");
+	    
+	    var event = document.createEvent('MouseEvents');
+	    ok(event, "created event");
+	    event.initEvent('click', true, true);
+	    a.dispatchEvent(event);
+	} finally {
+		Envjs.scriptTypes[""]=false;
+	}
+});
