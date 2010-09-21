@@ -120,7 +120,10 @@ function __dispatchEvent__(target, event, bubbles){
             });
         }
         if (target["on" + event.type]) {
-            target["on" + event.type](event);
+            var returnValue=target["on" + event.type](event);
+            if (returnValue === false) {
+            	event.preventDefault();
+            }
         }
         if (bubbles && !event.cancelled){
             __bubbleEvent__(target, event);

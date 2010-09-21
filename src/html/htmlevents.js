@@ -9,7 +9,10 @@ var __eval__ = function(script, node){
     if (!script == "" && Envjs.scriptTypes['']){
         // don't assemble environment if no script...
         try{
-            Envjs.eval(node.ownerDocument.ownerWindow, script, script+" ("+node+")");
+        	// wrap the inline handler in a double enclosure so we can correctly handle the return value
+        	// otherwise we get "error evaluating  InternalError: invalid return"
+        	var exec="(function(){var result=(function(){"+script+"})(); return result;})()";
+        	Envjs.eval(node.ownerDocument.ownerWindow, exec, script+" ("+node+")");
         }catch(e){
             console.log('error evaluating %s', e);
         }
