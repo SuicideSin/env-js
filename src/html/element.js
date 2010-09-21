@@ -41,6 +41,8 @@ HTMLElement = function(ownerDocument) {
 
 HTMLElement.prototype = new Element();
 __extend__(HTMLElement.prototype, HTMLEvents.prototype);
+__extend__(HTMLElement.prototype, MouseEvents.prototype);
+__extend__(HTMLElement.prototype, KeyboardEvents.prototype);
 __extend__(HTMLElement.prototype, {
     get className() {
         return this.getAttribute("class")||'';

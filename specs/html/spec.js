@@ -859,3 +859,10 @@ test("Option", function() {
     x = new Option('text1', 'value1');
     x = new Option('text2', 'value2', true, true);
 });
+
+test("Event Handlers Defined", function() {
+    var a=document.createElement("a");
+    ok(a["onfocus"], "html events defined");
+    ok(a["onclick"], "mouse events defined");
+    ok(a["onkeydown"], "keyboard events defined");
+});
