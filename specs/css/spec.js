@@ -86,6 +86,19 @@ test('CSS2Properties', function(){
     equals(div.style.cssText, 'display: block; height: 300px; width: 400px; opacity: 0.5; position: absolute;', '.style.cssText');
 });
 
+test('CSS2Properties across elements', function(){
+  var div = document.createElement('div');
+
+  equals(div.style.display, 'block', '.style.display');
+
+  div.setAttribute('style','display:none;');
+  equals(div.style.display, 'none', '.style.display');
+
+  var div2 = document.createElement('div');
+
+  equals(div2.style.display, 'block', '.style.display');
+});
+
 test('document.styleSheets', function() {
     ok(document.styleSheets, 'document.styleSheets exists');
     equals(document.styleSheets.toString(), '[object StyleSheetList]', 'StyleSheetsList.toString()');
