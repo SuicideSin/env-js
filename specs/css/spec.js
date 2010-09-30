@@ -179,3 +179,10 @@ test('box model', function(){
 	ok(true, "Box Model Test - Broken: Fix Me");
 	//equals(div2.offsetWidth , 1500, 'box model width should be 1500');
 });
+
+test('innerHTML with style attributes', function () {
+  var div = document.createElement('div');
+  div.innerHTML = '<div id="foo" style="display:none;">test</div>';
+
+  equals(div.firstChild.style.display, 'none', '.firstChild.style.display');
+});

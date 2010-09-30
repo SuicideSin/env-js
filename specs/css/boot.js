@@ -14,6 +14,7 @@ load('dist/dom.js');
 load('dist/event.js');
 load('dist/html.js');
 load('dist/css.js');
+load('dist/parser.js');
 load('specs/css/spec.js');
 start();
 

@@ -26,7 +26,9 @@ CSS2Properties = function(element){
     this.styleIndex = __extend__({}, __supportedStyles__);//non-standard
     this.type = element.tagName;//non-standard
     __setArray__(this, []);
-    __cssTextToStyles__(this, element.cssText || '');
+
+    var style = element.attributes && element.attributes.getNamedItem('style');
+    __cssTextToStyles__(this, element.cssText || (style && style.value) || '');
 };
 __extend__(CSS2Properties.prototype, {
     get cssText() {
